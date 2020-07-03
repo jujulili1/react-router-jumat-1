@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch, } from "react-router-dom";
+import BmiCalculator from './components/BmiCalculator/BmiCalculator';
+import CatAgeConversion from './components/CatAgeConversion/CatAgeConversion';
+import TextTransform from './components/TextTransform/TextTransform';
+import Header from './pages/Header/Header';
+import Home from './components/Home/Home';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="app">
+       <Router>
+        <Header />
+        <Switch>
+        <Route exact path="/">
+            <Home />
+          </Route>
+            <Route exact path="/BmiCalculator">
+                <BmiCalculator />
+            </Route>
+            <Route exact path="/CatAgeConversion">
+                <CatAgeConversion />
+            </Route>
+            <Route exact path="/TextTransform">
+                <TextTransform />
+            </Route>
+        </Switch>
+    </Router>
+</div>
   );
 }
 
